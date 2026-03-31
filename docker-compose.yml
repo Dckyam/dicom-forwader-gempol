@@ -3,26 +3,26 @@ version: '3.8'
 services:
   dicom-router:
     image: registry.dto.kemkes.go.id/pub/dicom-router:latest
-    container_name: dicom-router
+    container_name: dicom-router-gempol
     restart: always
     ports:
-      - "11113:11112"
-      - "8081:8080"
+      - "11116:11112"
+      - "8084:8080"
     environment:
-      - ORG_ID=100027444
-      - CLIENT=tQzkZ68MPzmbPUhkRGL2WcRRVA5n9kF2VCX2B27ZCfwD6pcq
-      - SECRET=GMPb54nFM0Y8nGySY4vJCAm2x3Rw8WBlXCU4rGZJt7uHFb2SNjj6rahYPfNxkcRf
+      - ORG_ID=100479900
+      - CLIENT=vpQdk6as5K4UOZnlmmiatZzGyMydADzdvZWHkVfGUqmG7eAj
+      - SECRET=VMIA3Z2GubiuGEoCQIX9rmIvWQ0edTOvK5R7A22ZAyaUtCMucirHd7louiyislAd
       - URL=https://api-satusehat.kemkes.go.id
       - AE_TITLE=DCMROUTER
     volumes:
       - "./out:/app/out"
       - "./logs:/app/logs"
     networks:
-      - dicom-net
+      - dicom-net-gempol
 
   dicom-forwarder:
     build: ./forwarder
-    container_name: dicom-forwarder
+    container_name: dicom-forwarder-gempol
     restart: unless-stopped
     volumes:
       - "./state:/state"
@@ -40,8 +40,8 @@ services:
     depends_on:
       - dicom-router
     networks:
-      - dicom-net
+      - dicom-net-gempol
 
 networks:
-  dicom-net:
+  dicom-net-gempol:
     driver: bridge
