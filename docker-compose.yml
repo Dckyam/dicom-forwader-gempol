@@ -14,6 +14,7 @@ services:
       - SECRET=VMIA3Z2GubiuGEoCQIX9rmIvWQ0edTOvK5R7A22ZAyaUtCMucirHd7louiyislAd
       - URL=https://api-satusehat.kemkes.go.id
       - AE_TITLE=DCMROUTER
+    entrypoint: ["/bin/bash", "-c", "/app/entrypoint.sh 2>&1 | tee -a /app/logs/router.log"]
     volumes:
       - "./out:/app/out"
       - "./logs:/app/logs"
