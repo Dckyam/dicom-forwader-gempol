@@ -27,7 +27,7 @@ services:
     volumes:
       - "./state:/state"
     environment:
-      - FTP_HOST=10.100.1.22
+      - FTP_HOST=10.6.1.22
       - FTP_PORT=2121
       - FTP_USER=admin
       - FTP_PASS=J4nganM4suk
