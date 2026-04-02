@@ -408,7 +408,7 @@
   function fmtTime(iso) {
     if (!iso) return '—';
     const d = new Date(iso);
-    return d.toLocaleDateString('id-ID') + ' ' + d.toLocaleTimeString('id-ID');
+    return d.toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta' }) + ' ' + d.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' });
   }
   function timeSince(iso) {
     if (!iso) return '—';
